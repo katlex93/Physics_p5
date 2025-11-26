@@ -1,6 +1,6 @@
 class Bubble
 {
-    constructor(x,y)
+    constructor(x,y, mass)
     {
         this.pos = createVector(x,y);
         this.vel = createVector(0,0)
@@ -8,13 +8,17 @@ class Bubble
         // this.vel.mult(random(3));
         this.acc = createVector(0,0)
 
-        this.r = 35 //radius
+        //this.r = r; //radius
+        this.mass = mass;
+        this.r = sqrt(this.mass) * 10
         
     }
 
     applyForce(force) //take a force that exists in environment
     {
-        this.acc.add(force);
+        // force.div(this.mass);
+        let f = p5.Vector.div(force, this.mass) //using static version of function since we don't want to mess with force
+        this.acc.add(f);
     }
 
     //keep track of position of bubble to avoid going beyond the screen
