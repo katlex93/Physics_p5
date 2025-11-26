@@ -10,7 +10,7 @@ class Bubble
 
         //this.r = r; //radius
         this.mass = mass;
-        this.r = sqrt(this.mass) * 10
+        this.r = sqrt(this.mass) * 10 //we take mass to be area of circle which is PIr^2 , therfore the radius is based on mass
         
     }
 
@@ -19,6 +19,35 @@ class Bubble
         // force.div(this.mass);
         let f = p5.Vector.div(force, this.mass) //using static version of function since we don't want to mess with force
         this.acc.add(f);
+    }
+
+    // friction() ////this is somewhat physical accurate friciton
+    // {
+    //     //how far is it from bottom
+    //     let dif = height - (this.pos.y + this.r)
+    //     if(dif < 1)
+    //     {
+    //         //Direction of friciton
+    //         let friction = this.vel.copy();
+    //         friction.normalize();
+    //         friction.mult(-1)
+
+    //         //Magnitude of friction
+    //         //let mu = 0.1 //random value might, chage if want specific material like rubber made global for now
+    //         let normal = this.mass;
+    //         friction.setMag(mu * normal)
+    //         this.applyForce(friction)
+    //     }
+    // }
+
+    friction() //this is simple working friction but they all stop a the same time
+    {
+         //how far is it from bottom
+        let dif = height - (this.pos.y + this.r)
+        if(dif < 1)
+        {
+            this.vel.mult(0.95)
+        }
     }
 
     //keep track of position of bubble to avoid going beyond the screen

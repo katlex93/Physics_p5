@@ -3,6 +3,7 @@ let bubble;
 let bubble2;
 let gravity;
 let wind;
+let mu = 0.1 
 
 function setup() {
   createCanvas(600, 600);
@@ -34,7 +35,7 @@ function draw() {
   bubble2.applyForce(weightB);
 
 
-  
+  bubble.friction();
   bubble.update();
   bubble.edges();
   bubble.draw();
