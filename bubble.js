@@ -5,8 +5,11 @@ class Bubble
         this.pos = createVector(x,y);
         //this.vel = createVector(1,0);
 
-       this.vel= p5.Vector.random2D()
-        this.vel.mult(3)
+         this.vel= p5.Vector.random2D()
+        this.vel.mult(random(3));
+        
+        // this.acc = p5.Vector.random2D()
+        // this.acc.setMag(0.01);
     }
     update()
     {
@@ -15,8 +18,14 @@ class Bubble
 
         //this.pos.x += this.vel.x;
         //this.pos.y += this.vel.y;
+        let mouse = createVector(mouseX, mouseY);
+        this.acc = p5.Vector.sub(mouse, this.pos);
+        this.acc.setMag(0.1);
+        //this.acc = p5.Vector.random2D()
 
-        this.pos.add(this.vel)
+        this.vel.add(this.acc);
+        this.vel.limit(6);
+        this.pos.add(this.vel);
 
        
     }
