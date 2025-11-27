@@ -1,3 +1,5 @@
+//Backup version of bubble with initial version of gravitational attraction 
+//NO Attractor Object for gravitational attraction
 class Bubble
 {
     constructor(x,y, mass)
@@ -93,8 +95,13 @@ class Bubble
     update()
     {
        
-      
+        // let mouse = createVector(mouseX, mouseY);
+        // this.acc = p5.Vector.sub(mouse, this.pos);
+        // this.acc.setMag(0.1);
+
+       
         this.vel.add(this.acc);
+        this.vel.limit(30);
         this.pos.add(this.vel);
         this.acc.set(0,0);
 

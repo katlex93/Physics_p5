@@ -6,10 +6,13 @@ let wind;
 let mu = 0.1 
 let dragC=0.1;
 
+let attractor;
+
 function setup() {
   createCanvas(600, 600);
   bubble = new Bubble(width/2-50, height/2-200,  4)
   bubble2 = new Bubble(width/2+50, height/2-200, 9)
+  attractor = new Attractor(width/2, height/2, 5)
 
   // pos = createVector(random(1, 600), random(1, 600));
 }
@@ -17,9 +20,7 @@ function setup() {
 function draw() {
   background(200);
 
-  fill(0,100, 250, 200)
-  noStroke()
-  rect(0, height/2, width);
+  
 
  if(mouseIsPressed)
  {
@@ -34,15 +35,19 @@ function draw() {
  let weightA = p5.Vector.mult(gravity, bubble.mass) 
  let weightB = p5.Vector.mult(gravity, bubble2.mass) 
  
-  bubble.applyForce(weightA);
-  bubble2.applyForce(weightB);
+ // bubble.applyForce(weightA); //aplies force of gravity
+  //bubble2.applyForce(weightB); //applie force of gravity
 
-  if(bubble.pos.y > height/2)
-  {
-    bubble.drag(dragC);
-  }
+  //Drag with water
+  // fill(0,100, 250, 200)
+  // noStroke()
+  // rect(0, height/2, width);
+  // if(bubble.pos.y > height/2)
+  // {
+  //   bubble.drag(dragC);
+  // }
 
-  bubble.friction();
+  //bubble.friction();
   bubble.update();
   bubble.edges();
 
@@ -51,6 +56,9 @@ function draw() {
   bubble2.update();
   bubble2.edges();
   bubble2.draw();
+
+  attractor.attract(bubble)
+  attractor.draw()
 
  
   
