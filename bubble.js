@@ -50,6 +50,23 @@ class Bubble
         }
     }
 
+    drag(c) 
+    {
+       //Direction of friciton
+            let drag = this.vel.copy();
+            drag.normalize();
+            drag.mult(-1);
+
+            
+            let speedSq= this.vel.magSq();
+            drag.setMag(c * speedSq)
+
+            this.applyForce(drag)
+
+
+        
+    }
+
     //keep track of position of bubble to avoid going beyond the screen
     edges()
     {
@@ -90,7 +107,10 @@ class Bubble
     }
     draw()
     {
+        push()
+        fill(200, 0, 150, 200)
         ellipse(this.pos.x, this.pos.y, this.r *2)
+        pop()
     }
 }
 
