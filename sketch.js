@@ -10,9 +10,9 @@ let attractor;
 
 function setup() {
   createCanvas(600, 600);
-  bubble = new Bubble(width/2-50, height/2-200,  4)
-  bubble2 = new Bubble(width/2+50, height/2-200, 9)
-  attractor = new Attractor(width/2, height/2, 5)
+  bubble = new Bubble(50, 50,  50)
+  bubble2 = new Bubble(width/2+50, height/2-200, 10)
+  attractor = new Attractor(200, 200, 100, 5)
 
   // pos = createVector(random(1, 600), random(1, 600));
 }
@@ -47,6 +47,10 @@ function draw() {
   //   bubble.drag(dragC);
   // }
 
+
+  attractor.attract(bubble)
+  attractor.draw()
+
   //bubble.friction();
   bubble.update();
   bubble.edges();
@@ -57,8 +61,7 @@ function draw() {
   bubble2.edges();
   bubble2.draw();
 
-  attractor.attract(bubble)
-  attractor.draw()
+ 
 
  
   

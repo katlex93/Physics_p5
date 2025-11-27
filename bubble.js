@@ -3,15 +3,16 @@ class Bubble
     constructor(x,y, mass)
     {
         this.pos = createVector(x,y);
-        this.vel = createVector(0,0)
-        // this.vel= p5.Vector.random2D()
-        // this.vel.mult(random(3));
+        //this.vel = createVector(0,0)
+        this.vel= p5.Vector.random2D()
+        this.vel.mult(random(3));
         this.acc = createVector(0,0)
 
         //this.r = r; //radius
         this.mass = mass;
-        this.r = sqrt(this.mass) * 10 //we take mass to be area of circle which is PIr^2 , therfore the radius is based on mass
-        
+        //this.r = sqrt(this.mass) * 10 //we take mass to be area of circle which is PIr^2 , therfore the radius is based on mass
+        this.r = sqrt(this.mass) * 2
+        // this.r= 30
     }
 
     applyForce(force) //take a force that exists in environment
